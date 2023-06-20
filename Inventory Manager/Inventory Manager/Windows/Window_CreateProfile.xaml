@@ -1,0 +1,24 @@
+﻿<Window x:Class="Inventory_Manager.Windows.Window_CreateProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d"
+        Title="Create Profile" Height="170" Width="400">
+    <DockPanel Margin="8" LastChildFill="False">
+        <DockPanel DockPanel.Dock="Top" Height="26">
+            <TextBlock Text="Profile Name:" VerticalAlignment="Center" Margin="0 0 16 0"/>
+            <TextBox Name="Box_ProfileName" VerticalContentAlignment="Center"/>
+        </DockPanel>
+        <DockPanel Grid.Row="1" Margin="0 8 0 0" DockPanel.Dock="Top" Height="26">
+            <CheckBox Name="CheckBox_CopySettings" Content="Copy settings from" VerticalAlignment="Center" Margin="0 0 16 0"/>
+            <ComboBox Name="DropDown_CopyTarget" ItemsSource="{Binding Settings.Profiles}" DisplayMemberPath="Label" SelectedIndex="{Binding Settings.SelectedProfileIndex}" VerticalContentAlignment="Center"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Height="26">
+            <Button Name="Button_Create" DockPanel.Dock="Right" Padding="32 0" Click="Button_Create_Click">Create</Button>
+            <Button Name="Button_Cancel" DockPanel.Dock="Right" Padding="22 0" Margin="0 0 8 0" Click="Button_Cancel_Click">Cancel</Button>
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="Inventory_Manager.Windows.Window_Splash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        BorderBrush="Black"
+        BorderThickness="1" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Window_Splash" Height="160" Width="400" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel LastChildFill="False">
+            <Button DockPanel.Dock="Right" Grid.Row="0" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" Click="Button_Hide_Click" Background="Transparent" BorderThickness="1 0 0 1">
+                <Path Width="10" Height="8" Stretch="Fill" Data="M 0 0 L 20 0 L 10 20 Z" Fill="Black"/>
+            </Button>
+        </DockPanel>
+        
+        <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Text="Work smarter, not harder." Height="21" Width="181" Margin="0 8 0 0"/>
+        <TextBlock VerticalAlignment="Bottom" Margin="16 0 0 0" Grid.Row="2" Height="16">
+            <TextBlock Text="{Binding Status}"/>
+            <TextBlock Name="Label_LoadingDots" Margin="-3 0 0 0">.</TextBlock>
+        </TextBlock>
+        <ProgressBar HorizontalAlignment="Stretch" Margin="16,8" Grid.Row="3" IsIndeterminate="True" SnapsToDevicePixels="True"/>
+        <DockPanel Grid.Row="4" Margin="4">
+            <Label VerticalAlignment="Bottom" Padding="0" Content="{Binding Path=Name, Source={x:Static Application.Current}}"/>
+            <Label VerticalAlignment="Bottom" Padding="0" Margin="8 0 0 0" Content="{Binding Path=Version, Source={x:Static Application.Current}}" Foreground="Gray"/>
+
+            <Label VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Padding="0" Content="{Binding Path=Settings.Profile.Label, Source={x:Static Application.Current}}"/>
+        </DockPanel>
+    </Grid>
+</Window>
